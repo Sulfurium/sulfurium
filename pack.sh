@@ -30,6 +30,6 @@ do
 	then
 		echo "Missing build script for ${PKG}!"
 	else
-		"${PKG}/build.sh" $PWD
+		"${PKG}/build.sh" $PWD || exit 1
 	fi
 done
