@@ -24,4 +24,14 @@ then
 		exit
 	fi
 fi
-
+PKGS=($ROOT/packages/*)
+for PKG in ${PKGS[*]}
+do
+	echo "Building ${PKG}..."
+	if [[ ! -x "${PKG}/build.sh" ]] 
+	then
+		echo "Missing build script for ${PKG}!"
+	else
+		"${PKG}/build.sh" $PWD
+	fi
+done
