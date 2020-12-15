@@ -30,11 +30,11 @@ mkdir -p "${TMP}/build/usr/include"
              --disable-werror                         \
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \
-             --with-headers=${TMP}/build/usr/include              \
+             --with-headers=/usr/include              \
              libc_cv_slibdir=${TMP}/build/lib
-make -j $(nproc)
+make -j $(nproc) || exit 1
 ln -sfnv $PWD/elf/ld-linux-x86-64.so.2 ${TMP}/build/lib/
-touch /etc/ld.so.conf
+touch $TMP/build/etc/ld.so.conf
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 make install DESTDIR="${TMP}/build/"
 cp -v ../nscd/nscd.conf ${TMP}/build/etc/nscd.conf
