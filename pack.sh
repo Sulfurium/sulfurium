@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 ROOT=`dirname $0`
 cd $ROOT
-if [[ -d "${ROOT}/build" ]]
+if [[ ! -d "${ROOT}/build" ]]
 then
-	rm -rf "${ROOT}/build"
+	mkdir "${ROOT}/build"
 fi
-mkdir "${ROOT}/build"
 if [[ -d "${ROOT}/temp" ]] 
 then
 	rm -rf "${ROOT}/temp"
