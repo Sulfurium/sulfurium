@@ -5,11 +5,10 @@ if [[ ! -d "${ROOT}/build" ]]
 then
 	mkdir "${ROOT}/build"
 fi
-if [[ -d "${ROOT}/temp" ]] 
+if [[ ! -d "${ROOT}/temp" ]] 
 then
-	rm -rf "${ROOT}/temp"
+	mkdir "${ROOT}/temp"
 fi
-mkdir "${ROOT}/temp"
 if [[ -n "${1}" ]]
 then
 	if [[ -d "${ROOT}/packages/${1}/" ]]
