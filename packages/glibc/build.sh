@@ -25,13 +25,14 @@ cd ${SRC_DIR}
 patch -Np1 -i ${TMP}/${NAME}.patch
 mkdir -v build
 cd build
+mkdir -p "${TMP}/build/lib"
 mkdir -p "${TMP}/build/usr/include"
 ../configure --prefix=/usr                            \
              --disable-werror                         \
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \
              --with-headers=/usr/include              \
-             libc_cv_slibdir=${TMP}/build/lib
+             libc_cv_slibdir=/build/lib
 make -j $(nproc) || exit 1
 ln -sfnv $PWD/elf/ld-linux-x86-64.so.2 ${TMP}/build/lib/
 touch $TMP/build/etc/ld.so.conf

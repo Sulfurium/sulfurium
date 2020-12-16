@@ -33,7 +33,7 @@ cd ${SRC_DIR}
             --with-tclinclude=${ROOT}/temp/tcl/build/usr/include
 make -j $(nproc)
 make install DESTDIR="${TMP}/build"
-ln -svf ${TMP}/build/expect5.45.4/libexpect5.45.4.so ${TMP}/build/usr/lib
+ln -svf libexpect5.45.4.so ${TMP}/build/usr/lib
 cd ${ROOT}
 # Define .PKG vars
 DATE=`date +"%D-%H:%M"`
