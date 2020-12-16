@@ -26,7 +26,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install
 ./configure --prefix=/usr    \
             --disable-static \
             --with-curses    \
-            --docdir=$TMP/build/usr/share/doc/readline-8.0
+            --docdir=/usr/share/doc/readline-8.0
 make SHLIB_LIBS="-lncursesw" -j $(nproc)
 make SHLIB_LIBS="-lncursesw" DESTDIR="$TMP/build" install
 cd ${ROOT}
