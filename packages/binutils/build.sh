@@ -35,8 +35,8 @@ mkdir $TMP/build/usr
              --enable-64-bit-bfd \
              --with-system-zlib
 
-make tooldir=$TMP/build/usr -j $(nproc)
-make tooldir=$TMP/build/usr install DESTDIR="$TMP/build"
+make tooldir=/usr -j $(nproc)
+make tooldir=/usr install DESTDIR="$TMP/build"
 cd ${ROOT}
 # Define .PKG vars
 DATE=`date +"%D-%H:%M"`

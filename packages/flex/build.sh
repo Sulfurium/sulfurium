@@ -21,7 +21,7 @@ wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
 tar -xf "${TMP}/${ARCHIVE}" -C "${TMP}/sources" || exit 1
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
-./configure --prefix=/usr --docdir=$TMP/build/usr/share/doc/flex-2.6.4
+./configure --prefix=/usr --docdir=/usr/share/doc/flex-2.6.4
 make -j $(nproc)
 make install DESTDIR="$TMP/build"
 ln -sv flex $TMP/build/usr/bin/lex
