@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 ROOT=$1
-NAME="gmp"
-VER="6.2.0"
+NAME="mpfr"
+VER="4.1.0"
 EXT="tar.xz"
-URL="http://ftp.gnu.org/gnu/gmp/${NAME}-${VER}.${EXT}"
+URL="http://ftp.gnu.org/gnu/mpfr/${NAME}-${VER}.${EXT}"
 if [[ ! -d "${ROOT}/temp" ]]
 then
     exit 1
@@ -21,12 +21,10 @@ wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
 tar -xf "${TMP}/${ARCHIVE}" -C "${TMP}/sources" || exit 1
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
-cp -v configfsf.guess config.guess
-cp -v configfsf.sub   config.sub # Don't optimize for host
 ./configure --prefix=/usr    \
-            --enable-cxx     \
+            --enable-thread-safe     \
             --disable-static \
-            --docdir=/usr/share/doc/gmp-${VER}
+            --docdir=/usr/share/doc/${NAME}-${VER}
 make -j $(nproc)
 make html -j $(nproc)
 make install DESTDIR="$TMP/build"
