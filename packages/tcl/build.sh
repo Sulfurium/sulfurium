@@ -51,7 +51,7 @@ unset SRCDIR
 make DESTDIR="${TMP}/build" install
 chmod -v u+w ${TMP}/build/usr/lib/libtcl8.6.so
 make DESTDIR="${TMP}/build" install-private-headers
-ln -sv "${TMP}/build/usr/bin/tclsh8.6" "${TMP}/build/usr/bin/tclsh"
+ln -sv "tclsh8.6" "${TMP}/build/usr/bin/tclsh"
 cd ${ROOT}
 # Define .PKG vars
 DATE=`date +"%D-%H:%M"`
