@@ -19,7 +19,7 @@ mkdir "${TMP}/build"
 ARCHIVE="${NAME}-${VER}.${EXT}"
 wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
 tar -xf "${TMP}/${ARCHIVE}" -C "${TMP}/sources" || exit 1
-wget "http://www.linuxfromscratch.org/patches/lfs/10.0/${NAME}-${VER}-fhs-1.patch" -O "${TMP}/${NAME}.patch" || exit 1
+cp ${ROOT}/packages/${NAME}/${NAME}-fhs.patch $TMP/${NAME}.patch
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
 patch -Np1 -i ${TMP}/${NAME}.patch
