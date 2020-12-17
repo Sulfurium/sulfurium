@@ -3,7 +3,6 @@ ROOT=$1
 NAME="bzip2"
 VER="1.0.8"
 EXT="tar.gz"
-PATCH_URL="http://www.linuxfromscratch.org/patches/lfs/10.0/${NAME}-${VER}-install_docs-1.patch"
 URL="https://www.sourceware.org/pub/${NAME}/${NAME}-${VER}.${EXT}"
 if [[ ! -d "${ROOT}/temp" ]]
 then
@@ -20,10 +19,8 @@ mkdir "${TMP}/build"
 ARCHIVE="${NAME}-${VER}.${EXT}"
 wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
 tar -xf "${TMP}/${ARCHIVE}" -C "${TMP}/sources" || exit 1
-wget $PATCH_URL -O "${TMP}/${NAME}.patch" || exit 1
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
-patch -Np1 -i $TMP/$NAME.patch
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 export MAKEFLAGS="-j $(nproc)"
