@@ -23,7 +23,7 @@ SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=$TMP/build/usr/share/doc/${NAME}-${VER}
+            --docdir=/usr/share/doc/${NAME}-${VER}
 make -j $(nproc)
 make install DESTDIR="$TMP/build"
 cd ${ROOT}
