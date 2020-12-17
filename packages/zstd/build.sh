@@ -23,7 +23,7 @@ SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
 make -j $(nproc)
 mkdir -p $TMP/build/usr
-make prefix=$TMP/build/usr DESTDIR=$TMP/build/ install
+make prefix=/usr DESTDIR=$TMP/build/ install
 cd ${ROOT}
 # Define .PKG vars
 DATE=`date +"%D-%H:%M"`
