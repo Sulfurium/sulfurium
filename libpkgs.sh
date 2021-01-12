@@ -102,6 +102,6 @@ download_and_unpack() {
 }
 # $1: TMP
 make_and_install() {
-    make $(get_make_args)
-    make install DESTDIR="$1/build"
+    make $(get_make_args) || exit 1
+    make install DESTDIR="$1/build" || exit 1
 }
