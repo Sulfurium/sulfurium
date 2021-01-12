@@ -4,10 +4,12 @@ source "${ROOT}/libpkgs.sh"
 NAME="tcl"
 VER="8.6.10"
 EXT="tar.gz"
+
 DOC_URL="https://downloads.sourceforge.net/${NAME}/${NAME}${VER}-html.${EXT}"
 URL="https://downloads.sourceforge.net/${NAME}/${NAME}${VER}-src.${EXT}"
 TMP="${ROOT}/temp/${NAME}"
 config_pkg_dirs $NAME $ROOT
+ARCHIVE="${NAME}${VER}-src.${EXT}"
 DOC_ARCHIVE="${NAME}${VER}-html.${EXT}"
 wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
 wget "${DOC_URL}" -O "${TMP}/${DOC_ARCHIVE}" || exit 1
