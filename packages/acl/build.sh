@@ -23,7 +23,6 @@ make install DESTDIR="$TMP/build"
 mkdir $TMP/build/lib
 mv -v $TMP/build/usr/lib/libacl.so.* $TMP/build/lib
 ln -sfv ../../lib/$(readlink $TMP/build/usr/lib/libacl.so) $TMP/build/usr/lib/libacl.so
-cd ${ROOT}
 construct_PKG_file $NAME $VER $URL $TMP
 pack_zst "${TMP}/build" $NAME $VER $ROOT
 cd "${ROOT}"

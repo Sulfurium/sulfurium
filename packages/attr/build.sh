@@ -5,14 +5,6 @@ NAME="attr"
 VER="2.4.48"
 EXT="tar.gz"
 URL="http://download.savannah.gnu.org/releases/attr/${NAME}-${VER}.${EXT}"
-if [[ ! -d "${ROOT}/temp" ]]
-then
-    exit 1
-fi
-if [[ -d "${ROOT}/temp/${NAME}" ]]
-then
-	rm -rf "${ROOT}/temp/${NAME}"
-fi
 TMP="${ROOT}/temp/${NAME}"
 config_pkg_dirs $NAME $ROOT
 ARCHIVE="${NAME}-${VER}.${EXT}"
