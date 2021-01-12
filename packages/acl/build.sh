@@ -8,7 +8,6 @@ EXT="tar.gz"
 URL="http://download.savannah.gnu.org/releases/${NAME}/${NAME}-${VER}.${EXT}"
 TMP="${ROOT}/temp/${NAME}"
 config_pkg_dirs $NAME $ROOT
-ARCHIVE="${NAME}-${VER}.${EXT}"
 download_and_unpack $URL $TMP $NAME $VER $EXT 
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
