@@ -8,8 +8,7 @@ URL="http://download.savannah.gnu.org/releases/attr/${NAME}-${VER}.${EXT}"
 TMP="${ROOT}/temp/${NAME}"
 config_pkg_dirs $NAME $ROOT
 ARCHIVE="${NAME}-${VER}.${EXT}"
-wget "${URL}" -O "${TMP}/${ARCHIVE}" || exit 1
-tar -xf "${TMP}/${ARCHIVE}" -C "${TMP}/sources" || exit 1
+download_and_unpack $URL $TMP $NAME $VER $EXT 
 SRC_DIR="${TMP}/sources/${NAME}-${VER}"
 cd ${SRC_DIR}
 ./configure --prefix=/usr     \
@@ -17,13 +16,10 @@ cd ${SRC_DIR}
             --disable-static  \
             --sysconfdir=/etc \
             --docdir=/usr/share/doc/attr-${VER}
-make $(get_make_args)
-make install DESTDIR="$TMP/build"
+make_and_install $TMP
 mkdir $TMP/build/lib
 mv -v $TMP/build/usr/lib/libattr.so.* $TMP/build/lib
 ln -sfv ../../lib/$(readlink $TMP/build/usr/lib/libattr.so) $TMP/build/usr/lib/libattr.so
-cd ${ROOT}
-# Define .PKG vars
 construct_PKG_file $NAME $VER $URL $TMP
 pack_zst "${TMP}/build" $NAME $VER $ROOT
 cd "${ROOT}"
