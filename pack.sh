@@ -33,7 +33,7 @@ then
 			done
 		fi
 		"${PKG}/build.sh" $PWD || exit 1
-		exit 1 # Quit before compiliation of others
+		exit # Quit before compiliation of others
 	fi
 fi
 COMPILED=()

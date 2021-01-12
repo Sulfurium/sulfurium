@@ -85,5 +85,23 @@ pack_zst() {
         -exec strip --strip-all {} ';'
     fi
     tar -czf "${ROOT}/build/${NAME}-${VER}.tar.zst" .
-
+}
+# Download and unpack
+# $1: URL
+# $2: TMP
+# $3: NAME
+# $4: VER
+# $5: EXT
+download_and_unpack() {
+    NAME=$3
+    VER=$4
+    EXT=$5
+    ARCHIVE="${NAME}-${VER}.${EXT}"
+    wget "${1}" -O "${2}/${ARCHIVE}" || exit 1
+    tar -xf "${2}/${ARCHIVE}" -C "${2}/sources" || exit 1
+}
+# $1: TMP
+make_and_install() {
+    make $(get_make_args)
+    make install DESTDIR="$1/build"
 }
