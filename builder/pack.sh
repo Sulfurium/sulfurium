@@ -51,7 +51,7 @@ SULF_PKG_DIR="${PKGDIR}/sulfbuild"
 mkdir -p "${SULF_PKG_DIR}"
 cd "${SULF_PKG_DIR}"
 cp -r "${DESTDIR}"/* "${SULF_PKG_DIR}"
-cat << EOF >> "${SULF_PKG_DIR}/.PKG"
+cat << EOF > "${SULF_PKG_DIR}/.PKG"
 name = ${NAME}
 version = ${VERSION}
 subversion = 1
